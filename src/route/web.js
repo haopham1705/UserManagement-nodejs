@@ -32,7 +32,7 @@ let uploadMultipleFiles = multer({ storage: storage, fileFilter: imageFilter }).
 
 const initWebRoute = (app) => {
     router.get('/', homeController.getHomepage);
-    router.get('/detail/user/:id', homeController.getDetailPage);
+    router.get('/detail/user/:id', homeController.getDetailUser);
     router.post('/create-new-user', homeController.createNewUser);
 
     router.post('/delete-user', homeController.deleteUser);
@@ -58,10 +58,8 @@ const initWebRoute = (app) => {
         })
     }, homeController.handleUploadMultipleFiles)
 
-
-
     router.get('/about', (req, res) => {
-        res.send(`I'm Eric!`)
+        res.send(`Hello World !!`)
     })
 
     return app.use('/', router)

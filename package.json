@@ -1,5 +1,5 @@
 {
-  "name": "nodebasic",
+  "name": "user_management",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/haryphamdev/node-js-basic-hoidanit.git"
+    "url": "git+https://github.com/haopham1705/BE-UserManagement-nodejs.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/haryphamdev/node-js-basic-hoidanit/issues"
+    "url": "https://github.com/haopham1705/BE-UserManagement-nodejs/issues"
   },
-  "homepage": "https://github.com/haryphamdev/node-js-basic-hoidanit#readme",
+  "homepage": "https://github.com/haopham1705/BE-UserManagement-nodejs",
   "dependencies": {
     "@babel/core": "7.15.5",
     "@babel/node": "7.15.4",

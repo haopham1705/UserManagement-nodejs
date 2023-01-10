@@ -7,11 +7,12 @@ let getHomepage = async (req, res) => {
 
     return res.render('index.ejs', { dataUser: rows, test: 'abc string test' })
 }
-
-let getDetailPage = async (req, res) => {
-    let userId = req.params.id;
-    let [user] = await pool.execute(`select * from users where id = ?`, [userId]);
-    return res.send(JSON.stringify(user))
+// Detail User
+let getDetailUser = async (req, res) => {
+    const userId = req.params.id;
+    const [rows, fields] = await pool.execute('select * from users where id = ?', [userId]);
+    // return res.send(JSON.stringify(user))
+    return res.render('detailUser.ejs', {dataUser: rows, test: 'abcdef'});
 }
 
 let createNewUser = async (req, res) => {
@@ -28,7 +29,7 @@ let deleteUser = async (req, res) => {
     await pool.execute('delete from users where id = ?', [userId])
     return res.redirect('/');
 }
-
+// Update User
 let getEditPage = async (req, res) => {
     let id = req.params.id;
     let [user] = await pool.execute('Select * from users where id = ?', [id]);
@@ -50,7 +51,8 @@ let getUploadFilePage = async (req, res) => {
 
 
 let handleUploadFile = async (req, res) => {
-
+    // console.log("🚀 ~ file: homeController.js:53 ~ handleUploadFile ~ res", req.file)
+    
     if (req.fileValidationError) {
 
         return res.send(req.fileValidationError);
@@ -66,6 +68,7 @@ let handleUploadFile = async (req, res) => {
 
 
 let handleUploadMultipleFiles = async (req, res) => {
+// console.log("🚀 ~ file: homeController.js:70 ~ handleUploadMultipleFiles ~ req", req.file)
 
     if (req.fileValidationError) {
         return res.send(req.fileValidationError);
@@ -88,6 +91,6 @@ let handleUploadMultipleFiles = async (req, res) => {
 }
 
 module.exports = {
-    getHomepage, getDetailPage, createNewUser, deleteUser, getEditPage, postUpdateUser,
+    getHomepage, getDetailUser, createNewUser, deleteUser, getEditPage, postUpdateUser,
     getUploadFilePage, handleUploadFile, handleUploadMultipleFiles
 }

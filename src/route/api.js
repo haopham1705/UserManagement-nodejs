@@ -5,6 +5,7 @@ let router = express.Router();
 
 const initAPIRoute = (app) => {
     router.get('/users', APIController.getAllUsers); // method GET -> READ data
+    router.get('/detail/:id', APIController.getUser); // method GET -> READ user
     router.post('/create-user', APIController.createNewUser); // method POST -> CREATE data
     router.put('/update-user', APIController.updateUser); //method PUT -> UPDATE data
     router.delete('/delete-user/:id', APIController.deleteUser); //method DELETE -> DELETE data

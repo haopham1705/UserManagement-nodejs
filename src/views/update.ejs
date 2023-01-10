@@ -11,6 +11,8 @@
 <body>
     <div class="update-user-container">
         <form action="/update-user" method="POST">
+            <h3>show data with JSON.strongify()</h3>
+            <div><%= JSON.stringify(dataUser) %></div>
             <div>
                 <label>First name:</label>
                 <input name="firstName" value="<%= dataUser.firstName %>" />

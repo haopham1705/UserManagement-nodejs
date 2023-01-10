@@ -12,6 +12,20 @@ let getAllUsers = async (req, res) => {
     })
 }
 
+let getUser = async (req, res) => {
+    const id = req.params.id;
+    if(!id){
+        return res.status(200).json({
+            message: 'mssing required params'
+        })
+    }
+    await pool.execute('Select * from users where id = ?', [id]);
+    return res.status(200).json({
+        message: 'ok',
+        data: rows
+    })
+}
+
 let createNewUser = async (req, res) => {
     let { firstName, lastName, email, address } = req.body;
 
@@ -58,6 +72,10 @@ let deleteUser = async (req, res) => {
     })
 }
 
+let UpdateContent = async(req, res) => {
+    let {title, date, author, mainContent, description} = req.body
+}
+
 module.exports = {
-    getAllUsers, createNewUser, updateUser, deleteUser
+    getAllUsers, getUser, createNewUser, updateUser, deleteUser
 }
